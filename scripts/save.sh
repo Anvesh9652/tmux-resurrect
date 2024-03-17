@@ -16,8 +16,6 @@ SCRIPT_OUTPUT="$1"
 grouped_sessions_format() {
 	local format
 	format+="#{session_grouped}"
-
-	
 	format+="${delimiter}"
 	format+="#{session_group}"
 	format+="${delimiter}"
