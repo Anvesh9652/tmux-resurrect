@@ -143,7 +143,7 @@ capture_pane_contents() {
 		fi
 		# the printf hack below removes *trailing* empty lines
 		# printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" > "$(pane_contents_file "save" "$pane_id")"
-		res=$(printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" | tmux_res_empty)
+		res=$(printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" | clean_tmux_pane_contents)
 		# in new tab for just startign propmt after restoring it is adding new line 
 		if [[ ${#res} -eq 0 ]]; then
 			printf '%s' "${res}" >  "$(pane_contents_file "save" "$pane_id")"
