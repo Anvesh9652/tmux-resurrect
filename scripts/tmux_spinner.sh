@@ -23,7 +23,7 @@ main() {
 	while true; do
 	  i=$(( (i+1) %4 ))
 	  tmux display-message " ${SPIN:$i:1} $MESSAGE"
-	  sleep 0.1
+	  sleep 0.01
 	done
 }
 main

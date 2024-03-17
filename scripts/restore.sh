@@ -381,7 +381,7 @@ main() {
 		cleanup_restored_pane_contents
 		execute_hook "post-restore-all"
 		stop_spinner
-		display_message "Tmux restore complete!"
+		display_message "Tmux restore complete!" "50"
 	fi
 }
 main
