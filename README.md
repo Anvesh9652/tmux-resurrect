@@ -2,6 +2,13 @@
 
 [![Build Status](https://travis-ci.org/tmux-plugins/tmux-resurrect.svg?branch=master)](https://travis-ci.org/tmux-plugins/tmux-resurrect)
 
+### Update
+After Installing the plugin, build the go binaries and movie it to the place where you can access the binary from anywhere in the system
+
+`$XDG_CONFIG_HOME/tmux/plugins/tmux-resurrect/build.sh`
+
+--- 
+
 Restore `tmux` environment after system restart.
 
 Tmux is great, except when you have to restart the computer. You lose all the
