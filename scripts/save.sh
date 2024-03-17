@@ -16,6 +16,8 @@ SCRIPT_OUTPUT="$1"
 grouped_sessions_format() {
 	local format
 	format+="#{session_grouped}"
+
+	
 	format+="${delimiter}"
 	format+="#{session_group}"
 	format+="${delimiter}"
@@ -140,7 +142,15 @@ capture_pane_contents() {
 			start_line="0"
 		fi
 		# the printf hack below removes *trailing* empty lines
-		printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" > "$(pane_contents_file "save" "$pane_id")"
+		# printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" > "$(pane_contents_file "save" "$pane_id")"
+		res=$(printf '%s\n' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" | tmux_res_empty)
+		# in new tab for just startign propmt after restoring it is adding new line 
+		if [[ ${#res} -eq 0 ]]; then
+			printf '%s' "${res}" >  "$(pane_contents_file "save" "$pane_id")"
+		else 
+			printf '%s\n' "${res}" >  "$(pane_contents_file "save" "$pane_id")"
+		fi
+		# printf '%s' "$(tmux capture-pane -epJ -S "$start_line" -t "$pane_id")" > /Users/agali/Desktop/Work/go-lang/tryouts/test/store.txt
 	fi
 }
 
